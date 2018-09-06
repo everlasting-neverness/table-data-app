@@ -1,0 +1,15 @@
+.thead {
+
+}
+
+.th {
+  border: 1px solid black;
+  padding: 0;
+}
+
+.th-btn {
+  width: 100%;
+  padding: 20px;
+  border: none;
+  background-color: #fff;
+}

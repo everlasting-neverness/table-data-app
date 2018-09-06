@@ -2,6 +2,8 @@ import React from "react";
 import Table from "../Table/Table.js";
 import InfoBlock from "../InfoBlock/InfoBlock.js";
 import { getData } from "../../helpers/getData.js";
+import SelectMenu from "../SelectMenu/SelectMenu.js";
+import "./Main.css";
 
 class Main extends React.Component {
   constructor(props) {
@@ -9,44 +11,36 @@ class Main extends React.Component {
     this.handleSelector = this.handleSelector.bind(this);
     this.state = {
       data: null,
-      amount: ""
+      amount: "",
+      loading: false
     };
   }
 
   handleSelector(e) {
     e.preventDefault();
-    const value = e.target.children[1].value;
-    this.setState({ amount: value });
-    console.log(value);
+    const value = e.target.children[0].value;
+    this.setState({ data: null, amount: value, loading: true });
     getData(fetchedData => {
-      this.setState({ data: fetchedData });
+      this.setState({ data: fetchedData, loading: false });
     }, value);
   }
 
   render() {
-    if (!this.state.data) {
-      return (
-        <div className="initial-block">
-          <form onSubmit={this.handleSelector}>
-            <h2>Choose the amount of data</h2>
-            <select
-              name="amount-selector"
-              className="amount-selector"
-              defaultValue={this.state.amount}
-            >
-              <option value="large">Large</option>
-              <option value="small">Small</option>
-            </select>
-            <button>Submit</button>
-          </form>
-        </div>
-      );
-    }
     return (
-      <div className="main-block">
+      <div className={`main-block ${this.state.loading ? "spinner" : ""}`}>
         <h1 className="header">Table App</h1>
-        <Table tableData={this.state.data} />
-        <InfoBlock />
+        <SelectMenu
+          amount={this.state.amount}
+          handleSelector={this.handleSelector}
+        />
+        {!this.state.data ? (
+          <div />
+        ) : (
+          <div>
+            <Table tableData={this.state.data} />
+            <InfoBlock />
+          </div>
+        )}
       </div>
     );
   }

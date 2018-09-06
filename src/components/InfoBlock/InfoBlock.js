@@ -1,4 +1,5 @@
 import React from "react";
+import "./InfoBlock.css";
 
 class InfoBlock extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class InfoBlock extends React.Component {
   render() {
     return (
       <div className="info-block">
-        
+
       </div>
     )
 
