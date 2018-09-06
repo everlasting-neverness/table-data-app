@@ -7,19 +7,19 @@ class Thead extends React.Component {
     this.state = {
       tableMenuItems: [
         {
-          text: "id"
+          value: "id"
         },
         {
-          text: "firstName"
+          value: "firstName"
         },
         {
-          text: "lastName"
+          value: "lastName"
         },
         {
-          text: "email"
+          value: "email"
         },
         {
-          text: "phone"
+          value: "phone"
         }
       ]
     };
@@ -28,13 +28,24 @@ class Thead extends React.Component {
   render() {
     return (
       <thead className="thead">
-        <tr className="tr">
+        <tr className="thead-tr">
           {this.state.tableMenuItems.map(item => {
             return (
-              <th className="th" key={item.text}>
-                <button className="th-btn">
-                  {item.text}
-                  <i className="fas fa-chevron-circle-up" />
+              <th className="th" key={item.value}>
+                <button
+                  className="th-btn"
+                  value={item.value}
+                  onClick={this.props.handleUserSort}
+                >
+                  {item.value}
+                  <i
+                    className={`fas ${
+                      this.props.sortValue === item.value &&
+                      this.props.sortDirectionAsc
+                        ? "fa-chevron-circle-up"
+                        : "fa-chevron-circle-down"
+                    }`}
+                  />
                 </button>
               </th>
             );

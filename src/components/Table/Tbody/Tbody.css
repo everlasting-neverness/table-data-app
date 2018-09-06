@@ -2,6 +2,10 @@
 
 }
 
+.tbody-tr:hover {
+  background: #09db5d;
+}
+
 .td {
   border: 1px solid black;
   padding: 10px;

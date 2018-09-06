@@ -14,7 +14,7 @@ function SelectMenu(props) {
           <option value="large">Large</option>
           <option value="small">Small</option>
         </select>
-        <button className="amount-selector-form-btn">Submit</button>
+        <button className="form-btn">Submit</button>
       </form>
     </div>
   );

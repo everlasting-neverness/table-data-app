@@ -5,12 +5,12 @@ import "./Table.css";
 
 function Table(props) {
   return (
-    <section className="table-container">
+    <div className="table-container">
       <table className="table">
-        <Thead />
+        <Thead handleUserSort={props.handleUserSort} sortValue={props.sortValue} sortDirectionAsc={props.sortDirectionAsc} />
         <Tbody tableData={props.tableData} handleItemSelect={props.handleItemSelect} />
       </table>
-    </section>
+    </div>
   );
 }
 

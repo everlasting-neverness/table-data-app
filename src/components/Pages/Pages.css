@@ -1,0 +1,21 @@
+.pagination-buttons {
+
+}
+
+.pages-btn {
+  background: #fff;
+  padding: 5px;
+  font-size: 1.2rem;
+  margin: 5px;
+}
+
+.pages-btn-active {
+  background: #09db5d;
+}
+
+.dots {
+  padding: 5px;
+  font-size: 1.2rem;
+  margin: 5px;
+  font-weight: bold;
+}
