@@ -1,0 +1,22 @@
+.info-block {
+  margin-top: 10px;
+  padding: 0 200px;
+}
+
+.info-item {
+  padding: 15px;
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  background: #eee;
+}
+
+.info-item-defenition {
+  flex: 1;
+  font-weight: bold;
+}
+
+.info-item-content {
+  flex: 6;
+  margin-left: 5px;
+}

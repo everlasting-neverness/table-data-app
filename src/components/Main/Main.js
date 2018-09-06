@@ -9,20 +9,30 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.handleSelector = this.handleSelector.bind(this);
+    this.handleItemSelect = this.handleItemSelect.bind(this);
     this.state = {
       data: null,
       amount: "",
-      loading: false
+      loading: false,
+      currentItem: null
     };
   }
 
   handleSelector(e) {
     e.preventDefault();
     const value = e.target.children[0].value;
-    this.setState({ data: null, amount: value, loading: true });
+    this.setState({ data: null, amount: value, loading: true, currentItem: null });
     getData(fetchedData => {
       this.setState({ data: fetchedData, loading: false });
     }, value);
+  }
+
+  handleItemSelect(e) {
+    const chosenItem = this.state.data.filter(
+      item => item.id === Number(e.target.parentElement.dataset.id)
+    )[0];
+    console.log(chosenItem)
+    this.setState({ currentItem: chosenItem });
   }
 
   render() {
@@ -37,8 +47,11 @@ class Main extends React.Component {
           <div />
         ) : (
           <div>
-            <Table tableData={this.state.data} />
-            <InfoBlock />
+            <Table
+              tableData={this.state.data}
+              handleItemSelect={this.handleItemSelect}
+            />
+            <InfoBlock currentItem={this.state.currentItem} />
           </div>
         )}
       </div>

@@ -8,7 +8,7 @@ function Table(props) {
     <section className="table-container">
       <table className="table">
         <Thead />
-        <Tbody tableData={props.tableData} />
+        <Tbody tableData={props.tableData} handleItemSelect={props.handleItemSelect} />
       </table>
     </section>
   );

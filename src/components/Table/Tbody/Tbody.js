@@ -6,7 +6,7 @@ function Tbody(props) {
     <tbody className="tbody">
       {props.tableData ? (
         props.tableData.map(row => (
-          <tr className="tr" key={row.id}>
+          <tr className="tr" key={row.id} data-id={row.id} onClick={props.handleItemSelect}>
             <td className="td">{row.id}</td>
             <td className="td">{row.firstName}</td>
             <td className="td">{row.lastName}</td>
