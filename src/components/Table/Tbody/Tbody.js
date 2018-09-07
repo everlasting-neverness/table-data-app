@@ -34,7 +34,12 @@ function Tbody(props) {
     <tbody className="tbody">
       {outputData ? (
         outputData
-          .slice(props.currentPage === 1 ? props.currentPage - 1 : (50 * (props.currentPage - 1)), props.currentPage * 50)
+          .slice(
+            props.currentPage === 1
+              ? props.currentPage - 1
+              : 50 * (props.currentPage - 1),
+            props.currentPage * 50
+          )
           .map(row => (
             <tr
               className="tbody-tr"

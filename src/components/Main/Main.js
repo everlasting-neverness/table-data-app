@@ -24,14 +24,19 @@ class Main extends React.Component {
       currentItem: null,
       currentPage: 1,
       sortValue: "id",
-      sortDirectionAsc: true
+      sortDirectionAsc: true,
+      loadingError: false
     };
   }
 
   handleUserSearch(e) {
     e.preventDefault();
     const userInput = e.target[0].value;
-    this.setState({ userSearchInput: userInput });
+    this.setState({
+      userSearchInput: userInput,
+      currentItem: null,
+      currentPage: 1
+    });
   }
 
   handleSelector(e) {
@@ -41,12 +46,17 @@ class Main extends React.Component {
       data: null,
       amount: value,
       loading: true,
-      currentItem: null
+      userSearchInput: "",
+      currentItem: null,
+      currentPage: 1,
+      sortValue: "id",
+      sortDirectionAsc: true
     });
     getData(fetchedData => {
       this.setState({
-        data: sortData(fetchedData, "id", true),
-        loading: false
+        data: fetchedData ? sortData(fetchedData, "id", true) : null,
+        loading: false,
+        loadingError: !fetchedData ? true : false
       });
     }, value);
   }
@@ -62,7 +72,7 @@ class Main extends React.Component {
   }
 
   handlePageChange(e) {
-    const value = Number(e.target.value)
+    const value = Number(e.target.value);
     this.setState({ currentPage: value });
   }
 
@@ -88,6 +98,11 @@ class Main extends React.Component {
             handleSelector={this.handleSelector}
           />
         </nav>
+        {this.state.loadingError ? (
+          <div className="error-message">Error loading data</div>
+        ) : (
+          <div />
+        )}
         {!this.state.data ? (
           <div />
         ) : (

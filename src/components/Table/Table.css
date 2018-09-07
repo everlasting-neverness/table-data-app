@@ -1,8 +1,10 @@
 .table-container {
-  display: flex;
-  justify-content: center;
+  padding: 20px 0;
+  margin: 0 auto;
 }
 
 .table {
-  padding: 10px 40px;
+  padding: 10px 0;
+  margin: 0 auto;
+  border-collapse: collapse;
 }
