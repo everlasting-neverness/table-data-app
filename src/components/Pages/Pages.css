@@ -1,5 +1,5 @@
 .pagination-buttons {
-
+  margin: 0 auto;
 }
 
 .pages-btn {
@@ -9,8 +9,16 @@
   margin: 5px;
 }
 
+.pages-btn:hover {
+  background-color: #eee;
+}
+
 .pages-btn-active {
   background: #09db5d;
+}
+
+.pages-btn-active:hover {
+  background-color: lightgreen;
 }
 
 .dots {

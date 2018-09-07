@@ -1,5 +1,6 @@
 .main-block {
   text-align: center;
+  padding: 0 20px;
 }
 
 .spinner:before {
@@ -13,7 +14,7 @@
   margin-top: -30px;
   margin-left: -30px;
   border-radius: 50%;
-  border-top: 3px solid lightgreen;
+  border-top: 3px solid #09db5d;
   border-right: 3px solid transparent;
   animation: spinner 0.8s linear infinite;
 }
@@ -34,4 +35,13 @@
   margin-left: 20px;
   padding: 9px;
   background-color: #09db5d;
+}
+
+.form-btn:hover {
+  background-color: lightgreen;
+}
+
+.error-message {
+  font-size: 30px;
+  color: red;
 }
