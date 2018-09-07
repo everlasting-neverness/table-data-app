@@ -7,8 +7,17 @@ function Table(props) {
   return (
     <div className="table-container">
       <table className="table">
-        <Thead handleUserSort={props.handleUserSort} sortValue={props.sortValue} sortDirectionAsc={props.sortDirectionAsc} />
-        <Tbody tableData={props.tableData} userSearchInput={props.userSearchInput} handleItemSelect={props.handleItemSelect} />
+        <Thead
+          handleUserSort={props.handleUserSort}
+          sortValue={props.sortValue}
+          sortDirectionAsc={props.sortDirectionAsc}
+        />
+        <Tbody
+          tableData={props.tableData}
+          userSearchInput={props.userSearchInput}
+          currentPage={props.currentPage}
+          handleItemSelect={props.handleItemSelect}
+        />
       </table>
     </div>
   );

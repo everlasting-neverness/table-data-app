@@ -62,7 +62,8 @@ class Main extends React.Component {
   }
 
   handlePageChange(e) {
-    this.setState({ currentPage: Number(e.target.value) });
+    const value = Number(e.target.value)
+    this.setState({ currentPage: value });
   }
 
   handleItemSelect(e) {
@@ -107,6 +108,7 @@ class Main extends React.Component {
               sortValue={this.state.sortValue}
               sortDirectionAsc={this.state.sortDirectionAsc}
               handleUserSort={this.handleUserSort}
+              currentPage={this.state.currentPage}
             />
             <InfoBlock currentItem={this.state.currentItem} />
           </section>

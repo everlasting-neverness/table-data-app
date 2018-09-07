@@ -33,19 +33,21 @@ function Tbody(props) {
   return (
     <tbody className="tbody">
       {outputData ? (
-        outputData.map(row => (
-          <tr
-            className="tbody-tr"
-            data-id={row.id}
-            onClick={props.handleItemSelect}
-          >
-            <td className="td">{row.id}</td>
-            <td className="td">{row.firstName}</td>
-            <td className="td">{row.lastName}</td>
-            <td className="td">{row.email}</td>
-            <td className="td">{row.phone}</td>
-          </tr>
-        ))
+        outputData
+          .slice(props.currentPage === 1 ? props.currentPage - 1 : (50 * (props.currentPage - 1)), props.currentPage * 50)
+          .map(row => (
+            <tr
+              className="tbody-tr"
+              data-id={row.id}
+              onClick={props.handleItemSelect}
+            >
+              <td className="td">{row.id}</td>
+              <td className="td">{row.firstName}</td>
+              <td className="td">{row.lastName}</td>
+              <td className="td">{row.email}</td>
+              <td className="td">{row.phone}</td>
+            </tr>
+          ))
       ) : (
         <tr />
       )}
