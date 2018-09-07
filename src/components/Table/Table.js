@@ -8,7 +8,7 @@ function Table(props) {
     <div className="table-container">
       <table className="table">
         <Thead handleUserSort={props.handleUserSort} sortValue={props.sortValue} sortDirectionAsc={props.sortDirectionAsc} />
-        <Tbody tableData={props.tableData} handleItemSelect={props.handleItemSelect} />
+        <Tbody tableData={props.tableData} userSearchInput={props.userSearchInput} handleItemSelect={props.handleItemSelect} />
       </table>
     </div>
   );

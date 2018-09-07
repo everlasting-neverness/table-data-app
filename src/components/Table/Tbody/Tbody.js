@@ -2,10 +2,38 @@ import React from "react";
 import "./Tbody.css";
 
 function Tbody(props) {
+  let outputData = props.tableData.filter(item => {
+    if (!props.userSearchInput) {
+      return true;
+    } else {
+      let match;
+      for (let value in item) {
+        if (value === "address") {
+          for (let adressValue in item[value]) {
+            match = item[value][adressValue]
+              .toLowerCase()
+              .includes(props.userSearchInput.toLowerCase())
+              ? true
+              : false;
+            if (match === true) return true;
+          }
+        } else if (value !== "id") {
+          match = String(item[value])
+            .toLowerCase()
+            .includes(props.userSearchInput.toLowerCase())
+            ? true
+            : false;
+          if (match) return true;
+        }
+      }
+      return match;
+    }
+  });
+
   return (
     <tbody className="tbody">
-      {props.tableData ? (
-        props.tableData.map(row => (
+      {outputData ? (
+        outputData.map(row => (
           <tr
             className="tbody-tr"
             data-id={row.id}

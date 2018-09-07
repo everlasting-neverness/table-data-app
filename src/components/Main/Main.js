@@ -11,6 +11,7 @@ import "./Main.css";
 class Main extends React.Component {
   constructor(props) {
     super(props);
+    this.handleUserSearch = this.handleUserSearch.bind(this);
     this.handleSelector = this.handleSelector.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleUserSort = this.handleUserSort.bind(this);
@@ -27,6 +28,12 @@ class Main extends React.Component {
     };
   }
 
+  handleUserSearch(e) {
+    e.preventDefault();
+    const userInput = e.target[0].value;
+    this.setState({ userSearchInput: userInput });
+  }
+
   handleSelector(e) {
     e.preventDefault();
     const value = e.target.children[0].value;
@@ -37,12 +44,14 @@ class Main extends React.Component {
       currentItem: null
     });
     getData(fetchedData => {
-      this.setState({ data: sortData(fetchedData, 'id', true), loading: false });
+      this.setState({
+        data: sortData(fetchedData, "id", true),
+        loading: false
+      });
     }, value);
   }
 
   handleUserSort(e) {
-    console.log(this.state.data);
     const value =
       e.target.tagName === "I" ? e.target.parentElement.value : e.target.value;
     this.setState({
@@ -68,7 +77,11 @@ class Main extends React.Component {
       <div className={`main-block ${this.state.loading ? "spinner" : ""}`}>
         <h1 className="header">Table App</h1>
         <nav className="navbar">
-          {this.state.data ? <SearchForm /> : <div />}
+          {this.state.data ? (
+            <SearchForm handleUserSearch={this.handleUserSearch} />
+          ) : (
+            <div />
+          )}
           <SelectMenu
             amount={this.state.amount}
             handleSelector={this.handleSelector}
@@ -89,6 +102,7 @@ class Main extends React.Component {
             )}
             <Table
               tableData={this.state.data}
+              userSearchInput={this.state.userSearchInput}
               handleItemSelect={this.handleItemSelect}
               sortValue={this.state.sortValue}
               sortDirectionAsc={this.state.sortDirectionAsc}
