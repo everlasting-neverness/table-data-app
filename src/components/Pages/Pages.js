@@ -3,7 +3,7 @@ import "./Pages.css";
 
 function Pages(props) {
   let current = props.currentPage,
-    last = props.length / 50,
+    last = Math.ceil(props.length / 50),
     delta = 2,
     left = current - delta,
     right = current + delta + 1,

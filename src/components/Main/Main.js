@@ -1,11 +1,9 @@
 import React from "react";
 import { getData } from "../../helpers/getData.js";
 import { sortData } from "../../helpers/sortData.js";
-import Table from "../Table/Table.js";
-import InfoBlock from "../InfoBlock/InfoBlock.js";
 import SearchForm from "../SearchForm/SearchForm.js";
 import SelectMenu from "../SelectMenu/SelectMenu.js";
-import Pages from "../Pages/Pages.js";
+import ContentSection from "../ContentSection/ContentSection.js";
 import "./Main.css";
 
 class Main extends React.Component {
@@ -106,27 +104,12 @@ class Main extends React.Component {
         {!this.state.data ? (
           <div />
         ) : (
-          <section>
-            {this.state.data.length > 50 ? (
-              <Pages
-                currentPage={this.state.currentPage}
-                length={this.state.data.length}
-                handlePageChange={this.handlePageChange}
-              />
-            ) : (
-              <div />
-            )}
-            <Table
-              tableData={this.state.data}
-              userSearchInput={this.state.userSearchInput}
-              handleItemSelect={this.handleItemSelect}
-              sortValue={this.state.sortValue}
-              sortDirectionAsc={this.state.sortDirectionAsc}
-              handleUserSort={this.handleUserSort}
-              currentPage={this.state.currentPage}
-            />
-            <InfoBlock currentItem={this.state.currentItem} />
-          </section>
+          <ContentSection
+            {...this.state}
+            handlePageChange={this.handlePageChange}
+            handleItemSelect={this.handleItemSelect}
+            handleUserSort={this.handleUserSort}
+          />
         )}
       </div>
     );

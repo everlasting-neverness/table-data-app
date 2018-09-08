@@ -1,11 +1,10 @@
 .table-container {
-  padding: 20px 0;
-  margin: 0 auto;
+  overflow-x: auto;
+  margin-bottom: 10px;
 }
 
 .table {
   padding: 10px 0;
   margin: 0 auto;
   border-collapse: collapse;
-  overflow-x: auto;
 }
