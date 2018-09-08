@@ -3,7 +3,7 @@ import "./InfoBlock.css";
 
 function InfoBlock(props) {
   if (!props.currentItem) {
-    return <div />;
+    return null;
   }
   let { streetAddress, city, state, zip } = props.currentItem.address;
   return (

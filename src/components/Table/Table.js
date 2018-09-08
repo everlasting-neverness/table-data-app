@@ -14,7 +14,6 @@ function Table(props) {
         />
         <Tbody
           tableData={props.tableData}
-          userSearchInput={props.userSearchInput}
           currentPage={props.currentPage}
           handleItemSelect={props.handleItemSelect}
         />

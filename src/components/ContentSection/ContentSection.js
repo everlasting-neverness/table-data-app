@@ -46,7 +46,7 @@ class ContentSection extends React.Component {
             handlePageChange={this.props.handlePageChange}
           />
         ) : (
-          <div />
+          null
         )}
         <Table
           tableData={tableData}

@@ -88,9 +88,7 @@ class Main extends React.Component {
         <nav className="navbar">
           {this.state.data ? (
             <SearchForm handleUserSearch={this.handleUserSearch} />
-          ) : (
-            <div />
-          )}
+          ) : null}
           <SelectMenu
             amount={this.state.amount}
             handleSelector={this.handleSelector}
@@ -98,12 +96,8 @@ class Main extends React.Component {
         </nav>
         {this.state.loadingError ? (
           <div className="error-message">Error loading data</div>
-        ) : (
-          <div />
-        )}
-        {!this.state.data ? (
-          <div />
-        ) : (
+        ) : null}
+        {!this.state.data ? null : (
           <ContentSection
             {...this.state}
             handlePageChange={this.handlePageChange}
