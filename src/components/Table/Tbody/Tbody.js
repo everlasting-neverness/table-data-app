@@ -10,7 +10,10 @@ function Tbody(props) {
           .map(row => (
             <tr
               className="tbody-tr"
+              key={row.id + row.email + row.lastName}
               data-id={row.id}
+              data-email={row.email}
+              data-lastname={row.lastName}
               onClick={props.handleItemSelect}
             >
               <td className="td">{row.id}</td>

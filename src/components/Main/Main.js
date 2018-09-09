@@ -75,8 +75,12 @@ class Main extends React.Component {
   }
 
   handleItemSelect(e) {
+    const userSelect = e.target.parentElement.dataset;
     const chosenItem = this.state.data.filter(
-      item => item.id === Number(e.target.parentElement.dataset.id)
+      item =>
+        item.id === Number(userSelect.id) &&
+        item.email === userSelect.email &&
+        item.lastName === userSelect.lastname
     )[0];
     this.setState({ currentItem: chosenItem });
   }
